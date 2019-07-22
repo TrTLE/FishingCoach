@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FishingCoach</string>
+    <string name="pondbutton">pondButton</string>
+    <string name="riverbutton">riverButton</string>
+    <string name="seafishingbutton">seafishingButton</string>
+    <string name="surfcastingbutton">surfcastingButton</string>
+</resources>
