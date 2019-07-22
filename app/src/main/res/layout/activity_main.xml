@@ -7,13 +7,45 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rowCount="4"
+            android:columnCount="1">
+
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_row="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/pond"
+                android:id="@+id/pond"
+                android:contentDescription="@string/pondbutton"/>
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_row="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/river"
+                android:id="@+id/river"
+                android:contentDescription="@string/riverbutton"/>
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_row="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/surfcasting_2_cannes"
+                android:id="@+id/surfcasting"
+                android:contentDescription="@string/surfcastingbutton"/>
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_row="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/bateau_2"
+                android:id="@+id/seafishing"
+                android:contentDescription="@string/seafishingbutton"/>
+
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
