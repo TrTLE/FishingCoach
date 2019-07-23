@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="isLandscape">false</bool>
+    <integer name="columnCount">1</integer>
+    <integer name="rowCount">4</integer>
+    <integer name="img1c">0</integer>
+    <integer name="img1r">0</integer>
+    <integer name="img2c">0</integer>
+    <integer name="img2r">1</integer>
+    <integer name="img3c">0</integer>
+    <integer name="img3r">2</integer>
+    <integer name="img4c">0</integer>
+    <integer name="img4r">3</integer>
+
+
+</resources>

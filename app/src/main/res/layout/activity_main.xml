@@ -1,51 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<GridLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".MainActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_column="@integer/columnCount"
+        android:layout_row="@integer/rowCount"
+>
 
-    <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:rowCount="4"
-            android:columnCount="1">
+    <ImageButton
+            android:background="@android:color/holo_orange_dark"
+            android:id="@+id/pond"
+            android:contentDescription="@string/pondbutton"
+            android:layout_column="@integer/img1c"
+            android:layout_row="@integer/img1r"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="1"
+            android:layout_rowSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+    />
+
+    <ImageButton
+            android:background="@android:color/holo_blue_bright"
+            android:id="@+id/river"
+            android:contentDescription="@string/riverbutton"
+            android:layout_column="@integer/img2c"
+            android:layout_row="@integer/img2r"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="1"
+            android:layout_rowSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+
+    />
+
+    <ImageButton
+            android:background="@android:color/holo_red_light"
+            android:id="@+id/surfcasting"
+            android:contentDescription="@string/surfcastingbutton"
+            android:layout_column="@integer/img3c"
+            android:layout_row="@integer/img3r"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="1"
+            android:layout_rowSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+    />
+
+    <ImageButton
+            android:background="@android:color/white"
+            android:id="@+id/seafishing"
+            android:contentDescription="@string/seafishingbutton"
+            android:layout_column="@integer/img4c"
+            android:layout_row="@integer/img4r"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnSpan="1"
+            android:layout_rowSpan="1"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+    />
 
 
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_row="1"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/pond"
-                android:id="@+id/pond"
-                android:contentDescription="@string/pondbutton"/>
 
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_row="1"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/river"
-                android:id="@+id/river"
-                android:contentDescription="@string/riverbutton"/>
-
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_row="1"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/surfcasting_2_cannes"
-                android:id="@+id/surfcasting"
-                android:contentDescription="@string/surfcastingbutton"/>
-
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_row="1"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/bateau_2"
-                android:id="@+id/seafishing"
-                android:contentDescription="@string/seafishingbutton"/>
-
-    </GridLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</GridLayout>
