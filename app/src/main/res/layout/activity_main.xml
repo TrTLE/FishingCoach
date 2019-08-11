@@ -11,8 +11,9 @@
 >
 
     <ImageButton
-            android:background="@android:color/holo_orange_dark"
+            android:background="@drawable/pond"
             android:id="@+id/pond"
+            android:onClick="onPondClicked"
             android:contentDescription="@string/pondbutton"
             android:layout_column="@integer/img1c"
             android:layout_row="@integer/img1r"
@@ -25,8 +26,9 @@
     />
 
     <ImageButton
-            android:background="@android:color/holo_blue_bright"
+            android:background="@drawable/river"
             android:id="@+id/river"
+            android:onClick="onRiverCliked"
             android:contentDescription="@string/riverbutton"
             android:layout_column="@integer/img2c"
             android:layout_row="@integer/img2r"
@@ -40,8 +42,9 @@
     />
 
     <ImageButton
-            android:background="@android:color/holo_red_light"
+            android:background="@drawable/surfcasting_2_cannes"
             android:id="@+id/surfcasting"
+            android:clickable="true"
             android:contentDescription="@string/surfcastingbutton"
             android:layout_column="@integer/img3c"
             android:layout_row="@integer/img3r"
@@ -54,8 +57,9 @@
     />
 
     <ImageButton
-            android:background="@android:color/white"
+            android:background="@drawable/bateau"
             android:id="@+id/seafishing"
+            android:clickable="true"
             android:contentDescription="@string/seafishingbutton"
             android:layout_column="@integer/img4c"
             android:layout_row="@integer/img4r"

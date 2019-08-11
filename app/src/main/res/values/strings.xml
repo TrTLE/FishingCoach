@@ -5,4 +5,5 @@
     <string name="seafishingbutton">seafishingButton</string>
     <string name="surfcastingbutton">surfcastingButton</string>
     <string name="title_activity_pond">PondActivity</string>
+    <string name="recyclerFishPic">FishPic</string>
 </resources>
