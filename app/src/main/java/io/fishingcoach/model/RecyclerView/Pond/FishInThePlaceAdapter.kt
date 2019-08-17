@@ -30,7 +30,7 @@ class FishInThePlaceAdapter (val items : Array<FishInThePlace>) : RecyclerView.A
         //fonction qui permet de lier les données à la vue
         fun bindFishHere(FishHere: FishInThePlace) {
             with(FishHere) {
-                itemView.fishTxt.text = "$Name"
+                itemView.fishName.text = "$Name"
                 itemView.fishPic.setImageResource(FishHere.Pic)
                 val intent = Intent(view.context,FishDetailActivity::class.java)
                 itemView.setOnClickListener { ContextCompat.startActivity(view.context,intent,null) }

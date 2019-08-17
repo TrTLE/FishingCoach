@@ -8,12 +8,17 @@ class FishDb (private val dbHelper: FishDbHelper = FishDbHelper.instance) {
 
     fun requestFish() = dbHelper.use {
         select(
-            FishTable.Name,
-            FishTable.LivingPlace
-        ).parseList(classParser<FishTable>())
+            FishTable.NAME
+        ).parseList(classParser<Fish>())
     }
 
     fun insertFish(fish: Fish) = dbHelper.use {
-        insert(FishTable.Name, FishTable.LivingPlace to fish.LivingPlace)
+        insert(FishTable.NAME, FishTable.LIVINGPLACE to fish.LIVINGPLACE)
+    }
+
+    fun requestMaterial() = dbHelper.use {
+        select(
+            FishTable.NAME
+        ).parseList(classParser<Fish>())
     }
 }
