@@ -9,11 +9,14 @@ class App : Application(){
     companion object{
         lateinit var instance : App
         lateinit var db : FishDb
+        lateinit var dbHelper : FishDbHelper
     }
 
     override fun onCreate() {
         super.onCreate()
         instance = this
-        db = FishDb(FishDbHelper(instance))
+        dbHelper = FishDbHelper(instance)
+        dbHelper.readableDatabase
+        db = FishDb(dbHelper)
     }
 }

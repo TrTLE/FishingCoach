@@ -1,19 +1,12 @@
 package io.fishingcoach
 
-import android.content.Context
-import android.content.SharedPreferences
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.DisplayMetrics
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import android.util.Log
 import android.view.View
-import io.fishingcoach.model.*
+import androidx.core.content.ContextCompat
+import io.fishingcoach.model.Values.Place
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
@@ -23,11 +16,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun onPondClicked(buton : View){
-        buton.setOnClickListener { startActivity<io.fishingcoach.PondActivity>()}
-    }
+    fun onPlaceClicked(buton : View){
+        var myIntent = Intent(this,FishListActivity::class.java)
 
-    fun onRiverCliked(buton: View){
-        buton.setOnClickListener { startActivity<io.fishingcoach.RiverActivity>() }
+        when (buton){
+            pond -> myIntent.putExtra("PLACE", Place.POND)
+            river -> myIntent.putExtra("PLACE", Place.RIVER)
+            surfcasting -> myIntent.putExtra("PLACE", Place.SURFCASTING)
+            seafishing -> myIntent = Intent(this,ApiDriveTestActivity::class.java)
+        }
+
+        startActivity(myIntent)
     }
 }

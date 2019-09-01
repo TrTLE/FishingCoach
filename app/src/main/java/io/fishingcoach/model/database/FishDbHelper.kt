@@ -26,15 +26,12 @@ class FishDbHelper(ctx : Context = App.instance) : ManagedSQLiteOpenHelper(ctx,
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        Log.i("DB HELPER CREATION", "ONCREATE")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
     }
 
     private fun installDatabaseFromAssets() {
-        Log.i("BDD INSTALLATION", "TRY TO INSTALL")
-
         val inputStream = App.instance.assets.open("$ASSETS_PATH/$DB_NAME.db")
         try {
             val outputFile = File(App.instance.getDatabasePath(DB_NAME).path)
@@ -72,14 +69,11 @@ class FishDbHelper(ctx : Context = App.instance) : ManagedSQLiteOpenHelper(ctx,
             App.instance.deleteDatabase(DB_NAME)
             installDatabaseFromAssets()
             writeDatabaseVersionInPreferences()
-            val bddCurrentName = App.instance.getDatabasePath(DB_NAME)
-            Log.i("BDD CREATION", "CREATE A NEW BDD $bddCurrentName)")
         }
     }
 
     override fun getReadableDatabase(): SQLiteDatabase {
         installOrUpdateIfNecessary()
-        Log.i("READABLE BDD CREATION", "CREATE A NEW BDD)")
         return super.getReadableDatabase()
     }
 
