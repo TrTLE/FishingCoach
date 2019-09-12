@@ -1,6 +1,9 @@
 package io.fishingcoach.model.RecyclerView.Pond
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,7 +53,20 @@ class FishInThePlaceAdapter (val items : Array<FishInThePlace>) : RecyclerView.A
                     textView.text = fishingType.NAME
                     val intent = Intent(view.context,FishDetailActivity::class.java)
                     intent.putExtra("FishingType", fishingType.NAME)
-                    textView.setOnClickListener{ ContextCompat.startActivity(view.context,intent,null) }
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        textView.setOnClickListener {
+                            ContextCompat.startActivity(
+                                view.context, intent,
+                                ActivityOptions.makeSceneTransitionAnimation(view.context as Activity).toBundle()
+                            )
+                        }
+                    }else {
+                        textView.setOnClickListener {
+                            ContextCompat.startActivity(
+                                view.context, intent, null
+                            )
+                        }
+                    }
                     itemView.sub_item.addView(textView)
                 }
 
