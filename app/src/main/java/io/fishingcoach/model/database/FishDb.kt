@@ -46,16 +46,6 @@ class FishDb (private val dbHelper: FishDbHelper = FishDbHelper.instance) {
 
     /*TODO Use query fonction */
     fun requestFishingTypeFromFishAndPlace(fishName :String, place: String) = dbHelper.use {
-       /*val projections = arrayOf("NAME","ID","DESCRIPTION")
-        val selection = "ID =?"
-        val selectionArg = arrayOf("$fishName")
-        val groupeBy = "NAME"
-        val having = null
-        val orderBy = "NAME ASC"
-        val maxResultSize = "60"
-        //var cursor = query(FishTable.NAME,projections,selection,selectionArg,groupeBy,having, orderBy, maxResultSize)
-*/
-
         val rawQuery = "SELECT T.* FROM FISH as F, FISHINGTYPE as T WHERE F.FISHINGTYPE = T.ID AND F.LIVINGPLACE = '" + place +"' AND F.NAME = '" + fishName + "';"
         val cursor = rawQuery(rawQuery,null)
 

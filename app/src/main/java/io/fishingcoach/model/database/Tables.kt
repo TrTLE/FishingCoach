@@ -1,5 +1,6 @@
 package io.fishingcoach.model.database
-
+//TODO Add new columns name
+//TODO Add new table
 object FishTable {
     val NAME = "FISH"
     val ID = "_id"
