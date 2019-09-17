@@ -1,4 +1,4 @@
-package io.fishingcoach.model.RecyclerView.Pond
+package io.fishingcoach.model.recyclerview.fishlist
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -53,6 +53,8 @@ class FishInThePlaceAdapter (val items : Array<FishInThePlace>) : RecyclerView.A
                     textView.text = fishingType.NAME
                     val intent = Intent(view.context,FishDetailActivity::class.java)
                     intent.putExtra("FishingType", fishingType.NAME)
+                    intent.putExtra("FishID", FishHere.ID)
+                    intent.putExtra("FishName", FishHere.Name)
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         textView.setOnClickListener {
                             ContextCompat.startActivity(

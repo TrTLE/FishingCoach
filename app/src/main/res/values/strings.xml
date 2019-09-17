@@ -6,4 +6,7 @@
     <string name="surfcastingbutton">surfcastingButton</string>
     <string name="title_activity_pond">PondActivity</string>
     <string name="recyclerFishPic">FishPic</string>
+    <string name="recyclerMaterialPic">MaterialPic</string>
+    <string name="MATERIAL_FISH_ID">FishID</string>
+    <string name="recyclerMaterialName">MaterialName</string>
 </resources>

@@ -6,18 +6,25 @@ object FishTable {
     val ID = "_id"
     val LIVINGPLACE = "LIVINGPLACE"
     val FISHINGTYPE = "FISHINGTYPE"
+    val IMG = "IMG"
 }
 
 object MaterialTable {
     val NAME = "MATERIAL"
     val DESCRIPTION = "DESCRIPTION"
     val ID = "_id"
-    val FISH = "FISH"
-    val FISHINGTYPE = "FISHINGTYPE"
+    val IMG = "IMG"
 }
 
 object FishingTypeTable {
     val NAME = "FISHINGTYPE"
     val DESCRIPTION = "DESCRIPTION"
     val ID = "_id"
+}
+
+object Fishing_DetailsTable {
+    val NAME = "FISHING_DETAILS"
+    val FISH = "FISH"
+    val FISHINGTYPE = "FISHINGTYPE"
+    val MATERIAL = "MATERIAL"
 }

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="recyclerFishPic">FishPic</string>
+    <string name="recyclerMaterialPic">MaterialPic</string>
+    <string name="MATERIAL_FISH_ID">FishID</string>
+    <string name="recyclerMaterialName">MaterialName</string>
 </resources>

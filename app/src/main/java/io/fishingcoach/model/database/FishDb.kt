@@ -1,12 +1,18 @@
 package io.fishingcoach.model.database
 
 import android.database.Cursor
-import org.jetbrains.anko.db.classParser
-import org.jetbrains.anko.db.insert
-import org.jetbrains.anko.db.parseList
-import org.jetbrains.anko.db.select
+import org.jetbrains.anko.db.*
 
 class FishDb (private val dbHelper: FishDbHelper = FishDbHelper.instance) {
+
+    fun requestFishNameById(fishID: Int) = dbHelper.use {
+        val projections = arrayOf("NAME")
+        val selection = "ID =?"
+        val selectionArg = arrayOf("$fishID")
+        var cursor = query(FishTable.NAME,projections,selection,selectionArg,null,null, null, null)
+
+        cursor.parseSingle(classParser<Fish>())
+    }
 
     fun requestFish() = dbHelper.use {
         select(
@@ -63,5 +69,12 @@ class FishDb (private val dbHelper: FishDbHelper = FishDbHelper.instance) {
         var cursor = query(FishingTypeTable.NAME,projections,selection,selectionArg,groupeBy,having, orderBy, maxResultSize)
 
         cursor.parseList(classParser<FishingType>())
+    }
+
+    fun requestGetMaterialByFishId(fishID :Int) = dbHelper.use {
+        val rawQuery = "SELECT M.* FROM MATERIAL as M, FISHING_DETAILS as F WHERE M.ID = F.MATERIAL AND F.FISH = '"+ fishID +"';"
+        val cursor = rawQuery(rawQuery,null)
+
+        cursor.parseList(classParser<Material>())
     }
 }

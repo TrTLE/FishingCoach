@@ -4,12 +4,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Explode
-import android.transition.Fade
-import android.transition.Slide
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.fishingcoach.model.RecyclerView.Pond.FishDataRecyclerViewProvider
-import io.fishingcoach.model.RecyclerView.Pond.FishInThePlace
-import io.fishingcoach.model.RecyclerView.Pond.FishInThePlaceAdapter
+import io.fishingcoach.model.recyclerview.fishlist.*
 import io.fishingcoach.model.Values.Place
 import kotlinx.android.synthetic.main.activity_fishlist.*
 
