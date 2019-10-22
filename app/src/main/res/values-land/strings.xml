@@ -4,4 +4,7 @@
     <string name="recyclerMaterialPic">MaterialPic</string>
     <string name="MATERIAL_FISH_ID">FishID</string>
     <string name="recyclerMaterialName">MaterialName</string>
+    <string name="MATERIAL_FISHNAME">FishName</string>
+    <string name="MATERIAL_FISHINGTYPE">FishingType</string>
+    <string name="FISH_PICTURE">fishPicture</string>
 </resources>

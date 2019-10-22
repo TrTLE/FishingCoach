@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".FishDetailActivity">
+        tools:context=".FishDetailActivity"
+        android:theme="@style/FishListDetailTheme">
 
         <TextView
                 android:id="@+id/detailFishName"
@@ -16,7 +17,15 @@
                 android:textSize="@dimen/FishDetailTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+                android:id="@+id/fishDetailPicture"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detailFishName"/>
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/MaterialToUseRecyclerView"
@@ -24,5 +33,6 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailFishName"/>
+                app:layout_constraintTop_toBottomOf="@+id/fishDetailPicture"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

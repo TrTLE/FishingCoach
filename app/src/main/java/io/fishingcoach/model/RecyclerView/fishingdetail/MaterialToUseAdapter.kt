@@ -28,7 +28,6 @@ class MaterialToUseAdapter (val items : Array<MaterialToUse>) : RecyclerView.Ada
                 Glide
                     .with(view)
                     .load(IMG)
-                    .centerCrop()
                     .into(itemView.materialPic)
 
                 itemView.materialName.text = "$Name"

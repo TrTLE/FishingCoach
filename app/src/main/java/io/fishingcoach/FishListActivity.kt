@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Explode
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.fishingcoach.model.recyclerview.fishlist.*
 import io.fishingcoach.model.Values.Place
@@ -20,8 +21,8 @@ class FishListActivity : AppCompatActivity() {
         init()
 
         setContentView(R.layout.activity_fishlist)
-        FishIsThePlaceRecyclerView.layoutManager = LinearLayoutManager(this)
-        FishIsThePlaceRecyclerView.adapter = FishInThePlaceAdapter(fishInThePlaceArray)
+        FishInThePlaceRecyclerView.layoutManager = LinearLayoutManager(this)
+        FishInThePlaceRecyclerView.adapter = FishInThePlaceAdapter(fishInThePlaceArray, this)
     }
 
     private fun init(){
