@@ -4,12 +4,12 @@ import io.fishingcoach.App
 import io.fishingcoach.model.database.Material
 import io.fishingcoach.model.recyclerview.fishingdetail.MaterialToUse
 
-class MaterialDataRecyclerViewProvider (private val FishID : Int) {
+class MaterialDataRecyclerViewProvider (fishID : Int, fishingTypeID : Int, placeID : Int) {
     private val materialList : List<Material>
 
     init {
-        if(FishID > 0)
-            materialList = App.db.requestGetMaterialByFishId(FishID)
+        if(fishID > 0 && fishingTypeID > 0 && placeID > 0)
+            materialList = App.db.requestGetMaterialByFishIdAndFishingTypeID(fishID, fishingTypeID, placeID)
         else
             materialList = emptyList()
     }

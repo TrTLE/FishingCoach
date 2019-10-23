@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.activity_fish_detail.*
 class FishDetailActivity : AppCompatActivity() {
 
     private var fishID = 0
+    private var fishingTypeID = 0
+    private var placeID = 0
     private lateinit var materialToUseArray: Array<MaterialToUse>
     private lateinit var fishName : String
     private lateinit var fishingType : String
@@ -39,7 +41,9 @@ class FishDetailActivity : AppCompatActivity() {
             fishDetailPicture.transitionName = R.string.FISH_PICTURE.toString()
         }
 
-        detailFishName.text = "Catch a " + fishName + " using " + fishingType
+        val detailFishNameText = "Catch a $fishName by using $fishingType"
+
+        detailFishName.text = detailFishNameText
 
         MaterialToUseRecyclerView.layoutManager = GridLayoutManager(this, 2)
         MaterialToUseRecyclerView.adapter = MaterialToUseAdapter(materialToUseArray)
@@ -47,11 +51,13 @@ class FishDetailActivity : AppCompatActivity() {
 
     private fun init(){
         fishID = intent.getIntExtra(getString(R.string.MATERIAL_FISH_ID), 0)
+        fishingTypeID = intent.getIntExtra("FishingTypeID", 0)
+        placeID = intent.getIntExtra("PlaceID", 0)
         fishName = intent.getStringExtra(getString(R.string.MATERIAL_FISHNAME))
         fishingType = intent.getStringExtra(getString(R.string.MATERIAL_FISHINGTYPE))
         fishPicture = intent.getStringExtra("FishPicture")
 
-        materialToUseArray = MaterialDataRecyclerViewProvider(fishID).getMaterialToUse()
+        materialToUseArray = MaterialDataRecyclerViewProvider(fishID,fishingTypeID,placeID).getMaterialToUse()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             with(window) {

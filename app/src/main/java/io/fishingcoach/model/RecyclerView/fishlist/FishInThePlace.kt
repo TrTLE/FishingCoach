@@ -2,10 +2,10 @@ package io.fishingcoach.model.recyclerview.fishlist
 
 import io.fishingcoach.model.database.FishingType
 
-data class FishInThePlace (val Name : String, val ID : Int, val Pic : String, val FishingType : Array<FishingType>){
+data class FishInThePlace (val Name : String, val ID : Int, val Pic : String, val PlaceID : Int, val FishingType : Array<FishingType>){
     private var expanded : Boolean = false
 
-    constructor(Name : String, ID : Int, Pic : String, FishingType:Array<FishingType>, expanded: Boolean) : this(Name, ID, Pic, FishingType){
+    constructor(Name : String, ID : Int, Pic : String, Place : Int, FishingType:Array<FishingType>, expanded: Boolean) : this(Name, ID, Pic, Place, FishingType){
             this.expanded = expanded
     }
 

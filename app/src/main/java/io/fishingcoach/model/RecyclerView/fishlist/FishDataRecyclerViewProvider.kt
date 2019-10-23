@@ -5,10 +5,14 @@ import io.fishingcoach.model.database.FishingType
 
 class FishDataRecyclerViewProvider (private val place: String){
     private val fishList : List<Fish>
+    private var placeID = 0
 
     init {
         if(place.isNotEmpty())
+        {
             fishList = App.db.requestFishByPlace(place)
+            placeID = App.db.requestGetPlaceID(place)
+        }
         else
             fishList = emptyList()
     }
@@ -19,10 +23,10 @@ class FishDataRecyclerViewProvider (private val place: String){
         if(fishList.isNotEmpty()) {
             var i = 0
             val url =
-                "https://2.bp.blogspot.com/-Mtiz4rXG9AE/UdMDy9i89RI/AAAAAAAAHJY/b5tjZN3bK4U/s1600/How_to_draw_cartoon_fish+%25284%2529.jpg" // POISSON CARTOON
+                "https://2.bp.blogspot.com/-Mtiz4rXG9AE/UdMDy9i89RI/AAAAAAAAHJY/b5tjZN3bK4U/s1600/How_to_draw_cartoon_fish+%25284%2529.jpg" // CARTOON FISH
 
             fishInThePlaceArray = Array<FishInThePlace>(fishList.size) {
-                FishInThePlace("ONE FISH", 666, url, Array<FishingType>(5) {
+                FishInThePlace("ONE FISH", 666, url, 666, Array<FishingType>(5) {
                     FishingType("ONE FISHINGTYPE", 666, "GOOD TO FISH")
                 })
             }
@@ -32,9 +36,10 @@ class FishDataRecyclerViewProvider (private val place: String){
                     fish.NAME,
                     fish.ID,
                     fish.IMG,
+                    placeID,
                     App.db.requestFishingTypeFromFishAndPlace(
                         fish.NAME,
-                        fish.LIVINGPLACE
+                        place
                     ).toTypedArray()
                 )
             }

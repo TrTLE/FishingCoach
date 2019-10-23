@@ -64,6 +64,8 @@ class FishInThePlaceAdapter (val items : Array<FishInThePlace>, val activity : A
                     textView.setTextColor(Color.BLUE)
                     val intent = Intent(view.context,FishDetailActivity::class.java)
                     intent.putExtra("FishingType", fishingType.NAME)
+                    intent.putExtra("FishingTypeID", fishingType.ID)
+                    intent.putExtra("PlaceID", FishHere.PlaceID)
                     intent.putExtra("FishID", FishHere.ID)
                     intent.putExtra("FishName", Name)
 

@@ -4,8 +4,6 @@ package io.fishingcoach.model.database
 object FishTable {
     val NAME = "FISH"
     val ID = "_id"
-    val LIVINGPLACE = "LIVINGPLACE"
-    val FISHINGTYPE = "FISHINGTYPE"
     val IMG = "IMG"
 }
 
@@ -27,4 +25,9 @@ object Fishing_DetailsTable {
     val FISH = "FISH"
     val FISHINGTYPE = "FISHINGTYPE"
     val MATERIAL = "MATERIAL"
+}
+
+object LivingPlace {
+    val NAME = "LIVINGPLACE"
+    val ID = "_id"
 }
