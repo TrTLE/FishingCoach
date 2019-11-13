@@ -3,29 +3,24 @@ package io.fishingcoach.model.recyclerview.fishlist
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
-import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
 import android.os.Build
-import android.os.Bundle
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.BitmapImageViewTarget
 import io.fishingcoach.FishDetailActivity
-import io.fishingcoach.FishListActivity
 import io.fishingcoach.R
-import io.opencensus.resource.Resource
+import kotlinx.android.synthetic.main.activity_fishlist.*
 import kotlinx.android.synthetic.main.item_and_fish.view.*
 
-class FishInThePlaceAdapter (val items : Array<FishInThePlace>, val activity : Activity) : RecyclerView.Adapter<FishInThePlaceAdapter.ViewHolder>(){
+class FishInThePlaceAdapter (private val items : Array<FishInThePlace>, private val activity : Activity) : RecyclerView.Adapter<FishInThePlaceAdapter.ViewHolder>(){
+    private var previousExpandedPosition:Int = -1
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val lineView = LayoutInflater.from(parent.context).inflate(R.layout.item_and_fish, parent, false)
         return ViewHolder(lineView)
@@ -34,13 +29,25 @@ class FishInThePlaceAdapter (val items : Array<FishInThePlace>, val activity : A
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val isExpanded = items[position].isExpanded()
         holder.itemView.sub_item.removeAllViews()
+        holder.itemView.isActivated = isExpanded
+        if(isExpanded)
+        {
+            holder.itemView.sub_item.visibility = View.VISIBLE
+            previousExpandedPosition = position
+        }
+        else
+            holder.itemView.sub_item.visibility = View.GONE
 
         holder.bindFishHere(items[position], activity)
 
         holder.itemView.setOnClickListener {
-            val expanded = items[position].isExpanded()
-            items[position].setExpanded(!expanded)
+            if(previousExpandedPosition!=-1)
+                items[previousExpandedPosition].setExpanded(false)
+            items[position].setExpanded(!isExpanded)
+            activity.FishInThePlaceRecyclerView.smoothScrollToPosition(position)
+            notifyItemChanged(previousExpandedPosition)
             notifyItemChanged(position)
         }
     }
@@ -89,11 +96,6 @@ class FishInThePlaceAdapter (val items : Array<FishInThePlace>, val activity : A
                     }
                     itemView.sub_item.addView(textView)
                 }
-
-                if (this.isExpanded())
-                    itemView.sub_item.visibility = View.VISIBLE
-                else
-                    itemView.sub_item.visibility = View.GONE
             }
         }
     }

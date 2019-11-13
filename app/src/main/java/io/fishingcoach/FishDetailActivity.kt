@@ -6,6 +6,16 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Explode
+import android.view.View
+import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.RotateAnimation
+import android.view.animation.TranslateAnimation
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -24,6 +34,9 @@ class FishDetailActivity : AppCompatActivity() {
     private lateinit var fishingType : String
     private lateinit var fishPicture : String
 
+    private var isFitToSreen = false
+    private lateinit var fishDetailActivitylayoutParam: ViewGroup.LayoutParams
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,18 +47,19 @@ class FishDetailActivity : AppCompatActivity() {
         Glide
             .with(this)
             .load(fishPicture)
-            .centerCrop()
+            .fitCenter()
             .into(fishDetailPicture)
+
+        fishDetailActivitylayoutParam = fishDetailPicture.layoutParams
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             fishDetailPicture.transitionName = R.string.FISH_PICTURE.toString()
         }
 
         val detailFishNameText = "Catch a $fishName by using $fishingType"
-
         detailFishName.text = detailFishNameText
 
-        MaterialToUseRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        MaterialToUseRecyclerView.layoutManager = GridLayoutManager(this, 3)
         MaterialToUseRecyclerView.adapter = MaterialToUseAdapter(materialToUseArray)
     }
 
@@ -56,7 +70,6 @@ class FishDetailActivity : AppCompatActivity() {
         fishName = intent.getStringExtra(getString(R.string.MATERIAL_FISHNAME))
         fishingType = intent.getStringExtra(getString(R.string.MATERIAL_FISHINGTYPE))
         fishPicture = intent.getStringExtra("FishPicture")
-
         materialToUseArray = MaterialDataRecyclerViewProvider(fishID,fishingTypeID,placeID).getMaterialToUse()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -64,6 +77,20 @@ class FishDetailActivity : AppCompatActivity() {
                 enterTransition = Explode()
                 exitTransition = Explode()
             }
+        }
+    }
+
+    fun onFishClicked(view:View) {
+        if (isFitToSreen){
+            isFitToSreen = !isFitToSreen
+            fishDetailPicture.layoutParams = fishDetailActivitylayoutParam
+            fishDetailPicture.adjustViewBounds = true
+        }else{
+            isFitToSreen = !isFitToSreen
+            fishDetailPicture.layoutParams.width = ConstraintLayout.LayoutParams.WRAP_CONTENT
+            fishDetailPicture.layoutParams.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+            fishDetailPicture.layoutParams = ConstraintLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+            fishDetailPicture.scaleType = ImageView.ScaleType.FIT_CENTER
         }
     }
 }

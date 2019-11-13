@@ -6,7 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".FishDetailActivity"
-        android:theme="@style/FishListDetailTheme">
+        android:theme="@style/FishListDetailTheme"
+        app:layout_constrainedWidth="true">
 
         <TextView
                 android:id="@+id/detailFishName"
@@ -21,19 +22,21 @@
 
         <ImageView
                 android:id="@+id/fishDetailPicture"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
+                android:layout_width="350dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="24dp"
                 android:contentDescription="@string/FISH_PICTURE"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detailFishName" />
+                app:layout_constraintTop_toBottomOf="@id/detailFishName"
+                android:onClick="onFishClicked" />
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/MaterialToUseRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginTop="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fishDetailPicture" />
