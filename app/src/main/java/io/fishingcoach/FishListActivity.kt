@@ -1,18 +1,19 @@
 package io.fishingcoach
 
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Explode
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.fishingcoach.model.recyclerview.fishlist.*
-import io.fishingcoach.model.Values.Place
+import io.fishingcoach.model.enumeration.Place
+import io.fishingcoach.model.recyclerView.fishlist.FishDataRecyclerViewProvider
+import io.fishingcoach.model.recyclerView.fishlist.FishInThePlace
+import io.fishingcoach.model.recyclerView.fishlist.FishInThePlaceAdapter
 import kotlinx.android.synthetic.main.activity_fishlist.*
 
 class FishListActivity : AppCompatActivity() {
 
-    private lateinit var fishInThePlaceArray: Array<FishInThePlace>
+    private lateinit var fishInThePlaceArray: List<FishInThePlace>
     private val placeToFish by lazy { intent.getStringExtra(Place.PLACE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +26,14 @@ class FishListActivity : AppCompatActivity() {
         FishInThePlaceRecyclerView.adapter = FishInThePlaceAdapter(fishInThePlaceArray, this)
     }
 
-    private fun init(){
-        fishInThePlaceArray = FishDataRecyclerViewProvider(placeToFish).getFishsInThePlace()
+    private fun init() {
+        fishInThePlaceArray = FishDataRecyclerViewProvider(placeToFish).getFishInThePlace()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            with(window){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            with(window) {
                 enterTransition = Explode()
                 exitTransition = Explode()
             }
+        }
     }
 }

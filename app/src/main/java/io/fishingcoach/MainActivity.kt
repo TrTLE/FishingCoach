@@ -3,18 +3,13 @@ package io.fishingcoach
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Explode
-import android.transition.Fade
-import android.transition.Slide
-import android.transition.Transition
-import kotlinx.android.synthetic.main.activity_main.*
 import android.view.View
 import android.view.Window
-import androidx.core.content.ContextCompat
-import io.fishingcoach.model.Values.Place
-import org.jetbrains.anko.startActivity
+import androidx.appcompat.app.AppCompatActivity
+import io.fishingcoach.model.enumeration.Place
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,19 +19,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun onPlaceClicked(button : View){
-        var myIntent = Intent(this,FishListActivity::class.java)
+    fun onPlaceClicked(button: View) {
+        var myIntent = Intent(this, FishListActivity::class.java)
 
-        when (button){
+        when (button) {
             pond -> myIntent.putExtra("PLACE", Place.POND)
             river -> myIntent.putExtra("PLACE", Place.RIVER)
             surfcasting -> myIntent.putExtra("PLACE", Place.SURFCASTING)
-            seafishing -> myIntent = Intent(this,ApiDriveTestActivity::class.java)
+            seafishing -> myIntent = Intent(this, ApiDriveTestActivity::class.java)
         }
 
         /*TODO FIND HOW TO USE XML TO MANAGE TRANSITION*/
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            with(window){
+            with(window) {
                 enterTransition = Explode()
                 exitTransition = Explode()
             }
@@ -44,6 +39,5 @@ class MainActivity : AppCompatActivity() {
         } else {
             startActivity(myIntent)
         }
-
     }
 }

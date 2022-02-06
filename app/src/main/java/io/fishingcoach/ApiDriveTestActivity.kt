@@ -1,8 +1,8 @@
 package io.fishingcoach
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -10,9 +10,9 @@ import com.google.android.gms.common.api.Scope
 import com.google.api.services.drive.DriveScopes
 
 //@ExperimentalCoroutineScope
-class ApiDriveTestActivity : AppCompatActivity()/*, CoroutineScope by MainScope() */{
+class ApiDriveTestActivity : AppCompatActivity()/*, CoroutineScope by MainScope() */ {
 
-    companion object{
+    companion object {
         private const val RESQUEST_SIGN_IN = 1
     }
 
