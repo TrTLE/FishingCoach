@@ -2,23 +2,20 @@ package io.fishingcoach.model.database
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.AssetManager
 import android.database.sqlite.SQLiteDatabase
-import android.icu.text.IDNA
-import android.util.Log
 import io.fishingcoach.App
-import org.jetbrains.anko.Android
-import org.jetbrains.anko.db.*
+import org.jetbrains.anko.db.ManagedSQLiteOpenHelper
 import java.io.File
 import java.io.FileOutputStream
 
 
-class FishDbHelper(ctx : Context = App.instance) : ManagedSQLiteOpenHelper(ctx,
+class FishDbHelper(ctx: Context = App.instance) : ManagedSQLiteOpenHelper(
+    ctx,
     DB_NAME, null,
     DB_VERSION
 ) {
 
-    companion object{
+    companion object {
         val DB_NAME = "fishingcoach"
         val ASSETS_PATH = "databases"
         val DB_VERSION = 1

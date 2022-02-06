@@ -1,26 +1,28 @@
-package io.fishingcoach.model.recyclerview.fishlist
+package io.fishingcoach.model.recyclerView.fishlist
+
 import io.fishingcoach.App
 import io.fishingcoach.model.database.Fish
 import io.fishingcoach.model.database.FishingType
 
-class FishDataRecyclerViewProvider (private val place: String){
-    private val fishList : List<Fish>
+class FishDataRecyclerViewProvider(private val place: String) {
+
+    private val TAG = "FishDataRecyclerViewProvider"
+    private val fishList: List<Fish>
     private var placeID = 0
 
     init {
-        if(place.isNotEmpty())
-        {
+        if (place.isNotEmpty()) {
+            //TODO remplacer l'appel à la BDD local pour un appel REST au serveur
             fishList = App.db.requestFishByPlace(place)
             placeID = App.db.requestGetPlaceID(place)
-        }
-        else
+        } else
             fishList = emptyList()
     }
 
-    fun getFishsInThePlace(): Array<FishInThePlace>{
+    fun getFishInThePlace(): Array<FishInThePlace> {
         var fishInThePlaceArray = emptyArray<FishInThePlace>()
 
-        if(fishList.isNotEmpty()) {
+        if (fishList.isNotEmpty()) {
             var i = 0
             val url =
                 "https://2.bp.blogspot.com/-Mtiz4rXG9AE/UdMDy9i89RI/AAAAAAAAHJY/b5tjZN3bK4U/s1600/How_to_draw_cartoon_fish+%25284%2529.jpg" // CARTOON FISH
@@ -47,6 +49,4 @@ class FishDataRecyclerViewProvider (private val place: String){
 
         return fishInThePlaceArray
     }
-
-
 }

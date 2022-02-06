@@ -1,4 +1,4 @@
-package io.fishingcoach.model.API
+package io.fishingcoach.model.api
 
 import io.fishingcoach.model.database.Fish
 

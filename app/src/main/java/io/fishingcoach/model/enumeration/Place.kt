@@ -1,4 +1,4 @@
-package io.fishingcoach.model.Values
+package io.fishingcoach.model.enumeration
 
 class Place {
     companion object{

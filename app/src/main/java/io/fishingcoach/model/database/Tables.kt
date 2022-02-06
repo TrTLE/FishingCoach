@@ -1,4 +1,5 @@
 package io.fishingcoach.model.database
+
 //TODO Add new columns name
 //TODO Add new table
 object FishTable {
