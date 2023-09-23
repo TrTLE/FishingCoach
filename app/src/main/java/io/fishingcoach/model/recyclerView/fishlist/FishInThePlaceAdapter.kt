@@ -35,6 +35,8 @@ class FishInThePlaceAdapter(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val position = holder.adapterPosition
+
         val isExpanded = items[position].isExpanded()
         holder.itemView.sub_item.removeAllViews()
         holder.itemView.isActivated = isExpanded

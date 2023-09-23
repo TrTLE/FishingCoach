@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         when (button) {
             pond -> myIntent.putExtra("PLACE", Place.POND)
             river -> myIntent.putExtra("PLACE", Place.RIVER)
-            surfcasting -> myIntent.putExtra("PLACE", Place.SURFCASTING)
+            surfcasting -> myIntent = Intent(this, NoImplementActivity::class.java)
             seafishing -> myIntent = Intent(this, ApiDriveTestActivity::class.java)
         }
 

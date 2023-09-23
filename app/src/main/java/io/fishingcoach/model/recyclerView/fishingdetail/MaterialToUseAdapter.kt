@@ -64,8 +64,8 @@ class MaterialToUseAdapter(val items: Array<MaterialToUse>) :
                             return true
                         }
                     }
-                    dialog.window.setBackgroundDrawable(picture.drawable)
-                    dialog.window.setLayout(
+                    dialog.window!!.setBackgroundDrawable(picture.drawable)
+                    dialog.window!!.setLayout(
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )

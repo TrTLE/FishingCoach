@@ -27,7 +27,7 @@ class FishListActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        fishInThePlaceArray = FishDataRecyclerViewProvider(placeToFish).getFishInThePlace()
+        fishInThePlaceArray = FishDataRecyclerViewProvider(placeToFish!!).getFishInThePlace()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             with(window) {

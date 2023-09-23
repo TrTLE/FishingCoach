@@ -58,9 +58,9 @@ class FishDetailActivity : AppCompatActivity() {
         fishID = intent.getIntExtra(getString(R.string.MATERIAL_FISH_ID), 0)
         fishingTypeID = intent.getIntExtra("FishingTypeID", 0)
         placeID = intent.getIntExtra("PlaceID", 0)
-        fishName = intent.getStringExtra(getString(R.string.MATERIAL_FISHNAME))
-        fishingType = intent.getStringExtra(getString(R.string.MATERIAL_FISHINGTYPE))
-        fishPicture = intent.getStringExtra("FishPicture")
+        fishName = intent.getStringExtra(getString(R.string.MATERIAL_FISHNAME))!!
+        fishingType = intent.getStringExtra(getString(R.string.MATERIAL_FISHINGTYPE))!!
+        fishPicture = intent.getStringExtra("FishPicture")!!
         materialToUseArray =
             MaterialDataRecyclerViewProvider(fishID, fishingTypeID, placeID).getMaterialToUse()
 
