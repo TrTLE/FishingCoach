@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             pond -> myIntent.putExtra("PLACE", Place.POND)
             river -> myIntent.putExtra("PLACE", Place.RIVER)
             surfcasting -> myIntent = Intent(this, NoImplementActivity::class.java)
-            seafishing -> myIntent = Intent(this, ApiDriveTestActivity::class.java)
+            seafishing -> myIntent = Intent(this, NoImplementActivity::class.java)
         }
 
         /*TODO FIND HOW TO USE XML TO MANAGE TRANSITION*/

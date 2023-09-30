@@ -51,14 +51,16 @@ class FishInThePlaceAdapter(
 
         holder.bindFishHere(items[position], activity)
 
-        holder.itemView.setOnClickListener {
-            if (previousExpandedPosition != -1)
-                items[previousExpandedPosition].setExpanded(false)
-            items[position].setExpanded(!isExpanded)
-            activity.FishInThePlaceRecyclerView.smoothScrollToPosition(position)
-            notifyItemChanged(previousExpandedPosition)
-            notifyItemChanged(position)
-        }
+        holder.itemView.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(v: View?) {
+                if (previousExpandedPosition != -1)
+                    items[previousExpandedPosition].setExpanded(false)
+                items[position].setExpanded(!isExpanded)
+                activity.FishInThePlaceRecyclerView.smoothScrollToPosition(position)
+                notifyItemChanged(previousExpandedPosition)
+                notifyItemChanged(position)
+            }
+        })
     }
 
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -101,22 +103,24 @@ class FishInThePlaceAdapter(
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 itemView.fishPic.transitionName = R.string.FISH_PICTURE.toString()
-                textView.setOnClickListener {
-                    val options = ActivityOptions.makeSceneTransitionAnimation(
-                        activity,
-                        itemView,
-                        R.string.FISH_PICTURE.toString()
-                    )
-                    ContextCompat.startActivity(view.context, intent, options.toBundle())
-                }
+                textView.setOnClickListener(object: View.OnClickListener {
+                    override fun onClick(v: View?) {
+                        val options = ActivityOptions.makeSceneTransitionAnimation(
+                            activity,
+                            itemView,
+                            R.string.FISH_PICTURE.toString()
+                        )
+                        ContextCompat.startActivity(view.context, intent, options.toBundle())
+                    }
+                })
                 textView.textAlignment = View.TEXT_ALIGNMENT_CENTER
 
             } else {
-                textView.setOnClickListener {
-                    ContextCompat.startActivity(
-                        view.context, intent, null
-                    )
-                }
+                textView.setOnClickListener(object: View.OnClickListener {
+                    override fun onClick(v: View?) {
+                        ContextCompat.startActivity(view.context, intent, null)
+                    }
+                })
             }
 
             return textView

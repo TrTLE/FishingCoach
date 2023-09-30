@@ -56,22 +56,24 @@ class MaterialToUseAdapter(val items: Array<MaterialToUse>) :
                         override fun onLoadCleared(placeholder: Drawable?) {
                         }
                     })
-                view.setOnClickListener {
-                    val dialog = object :
-                        Dialog(view.context, android.R.style.Theme_Translucent_NoTitleBar) {
-                        override fun onTouchEvent(event: MotionEvent): Boolean {
-                            this.dismiss()
-                            return true
+                view.setOnClickListener(object: View.OnClickListener {
+                    override fun onClick(v: View?) {
+                        val dialog = object :
+                            Dialog(view.context, android.R.style.Theme_Translucent_NoTitleBar) {
+                            override fun onTouchEvent(event: MotionEvent): Boolean {
+                                this.dismiss()
+                                return true
+                            }
                         }
+                        dialog.window!!.setBackgroundDrawable(picture.drawable)
+                        dialog.window!!.setLayout(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                        )
+                        dialog.show()
+                        Log.i("MATERIAL IMAGE", "CLICK SUR ${itemView.materialName.text}")
                     }
-                    dialog.window!!.setBackgroundDrawable(picture.drawable)
-                    dialog.window!!.setLayout(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                    )
-                    dialog.show()
-                    Log.i("MATERIAL IMAGE", "CLICK SUR ${itemView.materialName.text}")
-                }
+                })
             }
         }
     }
